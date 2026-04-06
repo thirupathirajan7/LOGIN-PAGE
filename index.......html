@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .show-password-label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #bc1414;
+            border: none;
+            border-radius: 24px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #bc1414;
+            }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            color: #df0c37;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        p{
+            padding: 15px 0px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        @media only screen and (max-width:600px)
+        {
+            .login-container{
+                background-color: #ffffff;
+                position: relative;
+                padding: 215px 115px;
+            }
+            body{
+                background-color: #ffffff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form name="myform2" action="login.php" method="POST">
+
+    <div class="login-container">
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="phone">Mobile Number</label>
+                <input type="text" id="phone" placeholder="Enter 10-digit mobile number" required maxlength="15" pattern="[0-9]+" title="Please enter numbers only">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-group checkbox-container">
+                <input type="checkbox" id="showPassword">
+                <label for="showPassword" class="show-password-label">Show Password</label>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+
+            <div class="form-footer">
+                <p>Powered by  <a href="https://tech.sacglobe.com/">   tech.sacglobe.com</a></p>
+            </div>
+        </form>
+    </div>
+    </form>
+
+    <script>
+        const showPasswordCheckbox = document.getElementById('showPassword');
+        const passwordField = document.getElementById('password');
+
+        showPasswordCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                passwordField.type = 'text';  
+            } else {
+                passwordField.type = 'password'; 
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            alert(`Phone: ${phone}\nPassword: ${password}`);
+        });
+    </script>
+
+</body>
+</html>
